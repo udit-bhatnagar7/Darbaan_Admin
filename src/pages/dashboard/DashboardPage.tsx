@@ -31,7 +31,7 @@ const data = [
 
 export default function DashboardPage() {
   const { theme } = useUIStore();
-  const { data: stats, isLoading } = useQuery({
+  const { data: stats, isLoading, isError } = useQuery({
     queryKey: ['dashboard-stats'],
     queryFn: async () => {
       const response = await axiosInstance.get('/dashboard/stats');
@@ -48,6 +48,15 @@ export default function DashboardPage() {
           ))}
         </div>
         <Skeleton className="h-[400px]" />
+      </div>
+    );
+  }
+
+  if (isError || !stats) {
+    return (
+      <div className="p-6 text-center text-destructive bg-destructive/10 rounded-xl border border-destructive/20">
+        <p className="font-medium">Failed to load dashboard statistics.</p>
+        <p className="text-sm mt-1 opacity-80">Please try refreshing the page.</p>
       </div>
     );
   }

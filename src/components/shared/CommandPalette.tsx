@@ -34,7 +34,7 @@ export function CommandPalette() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-background/80 pt-[15vh] backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-background/80 pt-[15vh] backdrop-blur-sm px-4">
       <div className="w-full max-w-xl overflow-hidden rounded-xl border bg-card shadow-2xl">
         <div className="flex items-center border-b px-4">
           <Search className="mr-2 h-5 w-5 text-muted-foreground" />
