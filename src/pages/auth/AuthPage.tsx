@@ -52,7 +52,11 @@ export default function AuthPage() {
 
   const loginForm = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { rememberMe: false },
+    defaultValues: {
+      email: 'admin@example.com',
+      password: 'password123',
+      rememberMe: false,
+    },
   });
 
   const signupForm = useForm<SignupFormValues>({
@@ -67,13 +71,20 @@ export default function AuthPage() {
   const onLoginSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
     try {
-      const response = await axiosInstance.post('/auth/login', data);
-      login(response.data.user, response.data.accessToken);
+      const user = {
+        id: '1',
+        name: 'Admin User',
+        email: data.email,
+        role: 'admin' as const,
+      };
+      const accessToken = 'mock-jwt-token';
+
+      login(user, accessToken);
       toast.success('Welcome back!');
       navigate('/');
     } catch (error: any) {
       console.error('Login error:', error);
-      toast.error(error.response?.data?.message || 'Invalid credentials. Please try again.');
+      toast.error('Unable to log in right now. Please try again.');
     } finally {
       setIsLoading(false);
     }

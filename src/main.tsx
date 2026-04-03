@@ -15,7 +15,7 @@ async function enableMocking() {
 }
 
 async function main() {
-  if (import.meta.env.DEV) {
+  if (import.meta.env.DEV || import.meta.env.MODE === 'preview') {
     await enableMocking();
   }
 
