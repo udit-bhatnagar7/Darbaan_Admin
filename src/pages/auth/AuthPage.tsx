@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'motion/react';
-import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Github, Chrome, CheckCircle2 } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Github, Chrome, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { useAuthStore } from '@/src/stores/authStore';
 import { Button } from '@/src/components/ui/Button';
 import { Input } from '@/src/components/ui/Input';
@@ -72,10 +72,17 @@ export default function AuthPage() {
       toast.success('Welcome back!');
       navigate('/');
     } catch (error: any) {
+      console.error('Login error:', error);
       toast.error(error.response?.data?.message || 'Invalid credentials. Please try again.');
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleDemoLogin = () => {
+    loginForm.setValue('email', 'admin@example.com');
+    loginForm.setValue('password', 'password123');
+    loginForm.handleSubmit(onLoginSubmit)();
   };
 
   const onSignupSubmit = async (data: SignupFormValues) => {
@@ -111,6 +118,7 @@ export default function AuthPage() {
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-info-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]" />
       </div>
 
       <motion.div
@@ -119,6 +127,15 @@ export default function AuthPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-[450px] z-10"
       >
+        <div className="flex justify-center mb-8">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+              <ShieldCheck className="h-6 w-6 text-white" />
+            </div>
+            <span className="text-2xl font-bold tracking-tight text-foreground">Darbaan Admin</span>
+          </div>
+        </div>
+
         <Card className="border-border/50 shadow-2xl backdrop-blur-sm bg-card/95 overflow-hidden">
           <AnimatePresence mode="wait">
             {view === 'auth' ? (
@@ -130,11 +147,6 @@ export default function AuthPage() {
                 transition={{ duration: 0.3 }}
               >
                 <CardHeader className="space-y-1 pb-6">
-                  <div className="flex justify-center mb-4">
-                    <div className="h-12 w-12 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-                      <Lock className="h-6 w-6 text-white" />
-                    </div>
-                  </div>
                   <CardTitle className="text-2xl font-bold text-center tracking-tight">
                     {activeTab === 'login' ? 'Welcome Back' : 'Create Account'}
                   </CardTitle>
@@ -233,6 +245,24 @@ export default function AuthPage() {
                             Sign In <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                         </form>
+
+                        <div className="relative my-6">
+                          <div className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t" />
+                          </div>
+                          <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-card px-2 text-muted-foreground">Demo Access</span>
+                          </div>
+                        </div>
+
+                        <Button 
+                          variant="outline" 
+                          className="w-full h-11 border-primary/20 hover:bg-primary/5 text-primary"
+                          onClick={handleDemoLogin}
+                          disabled={isLoading}
+                        >
+                          <User className="mr-2 h-4 w-4" /> Sign in as Demo Admin
+                        </Button>
                       </motion.div>
                     ) : (
                       <motion.div
