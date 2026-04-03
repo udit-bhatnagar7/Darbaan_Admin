@@ -182,7 +182,7 @@ export default function AddAmenityPage() {
         <Progress value={((currentStep + 1) / STEPS.length) * 100} className="h-2" />
         
         <div className="flex items-center gap-3 mt-6">
-          <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
             {React.createElement(STEPS[currentStep].icon, { className: "h-5 w-5" })}
           </div>
           <div>

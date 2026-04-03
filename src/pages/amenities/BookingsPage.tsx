@@ -104,7 +104,7 @@ export default function BookingsPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-emerald-600 rounded-xl text-white shadow-lg shadow-emerald-500/20">
+          <div className="p-2.5 bg-emerald-600 rounded-full text-white shadow-lg shadow-emerald-500/20">
             <Palmtree size={28} />
           </div>
           <div>

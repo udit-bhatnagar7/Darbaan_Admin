@@ -35,7 +35,7 @@ export default function SocietyDocsPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-blue-600 rounded-xl text-white shadow-lg shadow-blue-500/20">
+          <div className="p-2.5 bg-blue-600 rounded-full text-white shadow-lg shadow-blue-500/20">
             <Building2 size={28} />
           </div>
           <div>

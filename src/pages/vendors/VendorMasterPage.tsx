@@ -221,7 +221,7 @@ export default function VendorMasterPage() {
                 >
                   <td className="p-4">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 border border-primary/20">
+                      <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0 border border-primary/20">
                         {vendor.name.split(' ').map(n => n[0]).join('').substring(0, 2)}
                       </div>
                       <div className="space-y-1">

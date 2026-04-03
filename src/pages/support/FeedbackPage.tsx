@@ -236,7 +236,7 @@ export default function FeedbackPage() {
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-start gap-4">
                 <div className={cn(
-                  "p-2 rounded-xl shrink-0",
+                  "p-2 rounded-full shrink-0",
                   item.type === 'bug' ? "bg-destructive/10" : 
                   item.type === 'feature_request' ? "bg-warning-50" : "bg-info-50"
                 )}>

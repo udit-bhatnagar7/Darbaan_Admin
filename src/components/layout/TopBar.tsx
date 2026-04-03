@@ -131,8 +131,8 @@ export function TopBar() {
               <span className="text-sm font-medium leading-none text-foreground">{user?.name}</span>
               <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider mt-1">{user?.role}</span>
             </div>
-            <div className="flex h-10 w-10 sm:h-8 w-8 items-center justify-center rounded-full bg-primary/10 border border-primary/20 overflow-hidden">
-              <User size={14} className="text-primary sm:size-16" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 border border-primary/20 overflow-hidden shrink-0">
+              <User size={18} className="text-primary" />
             </div>
           </button>
 

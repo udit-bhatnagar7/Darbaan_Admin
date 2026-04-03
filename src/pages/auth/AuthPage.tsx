@@ -129,7 +129,7 @@ export default function AuthPage() {
       >
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+            <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
               <ShieldCheck className="h-6 w-6 text-white" />
             </div>
             <span className="text-2xl font-bold tracking-tight text-foreground">Darbaan Admin</span>
@@ -370,7 +370,7 @@ export default function AuthPage() {
               >
                 <CardHeader className="space-y-1 pb-6">
                   <div className="flex justify-center mb-4">
-                    <div className="h-12 w-12 rounded-xl bg-info-500 flex items-center justify-center shadow-lg shadow-info-500/20">
+                    <div className="h-12 w-12 rounded-full bg-info-500 flex items-center justify-center shadow-lg shadow-info-500/20">
                       <Mail className="h-6 w-6 text-white" />
                     </div>
                   </div>

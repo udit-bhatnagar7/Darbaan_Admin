@@ -95,7 +95,7 @@ export default function AIInsightsPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-purple-600 rounded-xl text-white shadow-lg shadow-purple-500/20">
+          <div className="p-2.5 bg-purple-600 rounded-full text-white shadow-lg shadow-purple-500/20">
             <BrainCircuit size={28} />
           </div>
           <div>
@@ -179,7 +179,7 @@ export default function AIInsightsPage() {
               >
                 <Card className="p-5 hover:shadow-md transition-all border-l-4 border-l-purple-500 group">
                   <div className="flex items-start gap-4">
-                    <div className={cn("p-3 rounded-xl shrink-0", suggestion.color)}>
+                    <div className={cn("p-3 rounded-full shrink-0", suggestion.color)}>
                       <suggestion.icon size={24} />
                     </div>
                     <div className="flex-1 space-y-1">

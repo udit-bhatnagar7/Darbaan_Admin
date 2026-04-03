@@ -74,7 +74,7 @@ export default function DashboardPage() {
         <Card className="hover-lift border-primary/20 bg-gradient-to-br from-primary/5 to-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-primary">Total Revenue</CardTitle>
-            <div className="rounded-lg p-2 bg-primary/10 text-primary border border-primary/20">
+            <div className="rounded-full p-2 bg-primary/10 text-primary border border-primary/20">
               <DollarSign className="h-4 w-4" />
             </div>
           </CardHeader>
@@ -91,7 +91,7 @@ export default function DashboardPage() {
         <Card className="hover-lift border-info-500/20 bg-gradient-to-br from-info-500/5 to-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-info-600 dark:text-info-400">Active Users</CardTitle>
-            <div className="rounded-lg p-2 bg-info-500/10 text-info-600 dark:text-info-400 border border-info-500/20">
+            <div className="rounded-full p-2 bg-info-500/10 text-info-600 dark:text-info-400 border border-info-500/20">
               <Users className="h-4 w-4" />
             </div>
           </CardHeader>
@@ -108,7 +108,7 @@ export default function DashboardPage() {
         <Card className="hover-lift border-success-500/20 bg-gradient-to-br from-success-500/5 to-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-success-600 dark:text-success-400">New Subscriptions</CardTitle>
-            <div className="rounded-lg p-2 bg-success-500/10 text-success-600 dark:text-success-400 border border-success-500/20">
+            <div className="rounded-full p-2 bg-success-500/10 text-success-600 dark:text-success-400 border border-success-500/20">
               <UserPlus className="h-4 w-4" />
             </div>
           </CardHeader>
@@ -125,7 +125,7 @@ export default function DashboardPage() {
         <Card className="hover-lift border-danger-500/20 bg-gradient-to-br from-danger-500/5 to-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-xs font-medium uppercase tracking-wider text-danger-600 dark:text-danger-400">Churn Rate</CardTitle>
-            <div className="rounded-lg p-2 bg-danger-500/10 text-danger-600 dark:text-danger-400 border border-danger-500/20">
+            <div className="rounded-full p-2 bg-danger-500/10 text-danger-600 dark:text-danger-400 border border-danger-500/20">
               <TrendingDown className="h-4 w-4" />
             </div>
           </CardHeader>

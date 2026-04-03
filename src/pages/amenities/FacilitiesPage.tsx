@@ -71,7 +71,7 @@ export default function FacilitiesPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-primary rounded-xl text-primary-foreground shadow-lg shadow-primary/20">
+          <div className="p-2.5 bg-primary rounded-full text-primary-foreground shadow-lg shadow-primary/20">
             <Building2 size={28} />
           </div>
           <div>

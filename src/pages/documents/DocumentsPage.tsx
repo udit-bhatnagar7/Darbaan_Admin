@@ -57,7 +57,7 @@ export default function DocumentsPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-amber-600 rounded-xl text-white shadow-lg shadow-amber-500/20">
+          <div className="p-2.5 bg-amber-600 rounded-full text-white shadow-lg shadow-amber-500/20">
             <Folder size={28} />
           </div>
           <div>
@@ -227,7 +227,7 @@ export default function DocumentsPage() {
                 <Card className="p-4 hover:shadow-md transition-all group cursor-pointer relative">
                   <div className="flex items-start justify-between mb-4">
                     <div className={cn(
-                      "h-12 w-12 rounded-xl flex items-center justify-center",
+                      "h-12 w-12 rounded-full flex items-center justify-center",
                       file.type === 'PDF' ? "bg-rose-50 text-rose-600" :
                       file.type === 'JPG' ? "bg-blue-50 text-blue-600" :
                       "bg-indigo-50 text-indigo-600"
