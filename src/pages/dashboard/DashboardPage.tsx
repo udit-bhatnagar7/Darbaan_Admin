@@ -37,29 +37,21 @@ export default function DashboardPage() {
       const response = await axiosInstance.get('/dashboard/stats');
       return response.data;
     },
+    retry: 1, // Only retry once
+    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  if (isLoading) {
-    return (
-      <div className="space-y-6">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {[...Array(4)].map((_, i) => (
-            <Skeleton key={i} className="h-32" />
-          ))}
-        </div>
-        <Skeleton className="h-[400px]" />
-      </div>
-    );
-  }
+  // Demo data as fallback
+  const demoStats = {
+    totalRevenue: '$45,231.89',
+    activeUsers: 2350,
+    newSubscriptions: 573,
+    churnRate: '2.4%',
+  };
 
-  if (isError || !stats) {
-    return (
-      <div className="p-6 text-center text-destructive bg-destructive/10 rounded-xl border border-destructive/20">
-        <p className="font-medium">Failed to load dashboard statistics.</p>
-        <p className="text-sm mt-1 opacity-80">Please try refreshing the page.</p>
-      </div>
-    );
-  }
+  // Use demo data if API fails or no data
+  const displayStats = stats || demoStats;
+  const showDemoNotice = isError || !stats;
 
   return (
     <div className="space-y-8">
@@ -70,6 +62,17 @@ export default function DashboardPage() {
         </div>
       </div>
 
+      {showDemoNotice && (
+        <div className="p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+            <p className="text-sm text-amber-800 dark:text-amber-200">
+              <strong>Demo Mode:</strong> Using sample data. Connect a backend API for real statistics.
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="hover-lift border-primary/20 bg-gradient-to-br from-primary/5 to-card">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -79,7 +82,7 @@ export default function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold tracking-tight text-foreground">{stats.totalRevenue}</div>
+            <div className="text-2xl font-bold tracking-tight text-foreground">{displayStats.totalRevenue}</div>
             <div className="flex items-center mt-2 space-x-2">
               <Badge variant="success" className="px-1.5 py-0 text-[10px]">
                 +20.1% <ArrowUpRight className="ml-0.5 h-3 w-3" />
@@ -96,7 +99,7 @@ export default function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold tracking-tight text-foreground">+{stats.activeUsers}</div>
+            <div className="text-2xl font-bold tracking-tight text-foreground">+{displayStats.activeUsers}</div>
             <div className="flex items-center mt-2 space-x-2">
               <Badge variant="success" className="px-1.5 py-0 text-[10px]">
                 +180.1% <ArrowUpRight className="ml-0.5 h-3 w-3" />
@@ -113,7 +116,7 @@ export default function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold tracking-tight text-foreground">+{stats.newSubscriptions}</div>
+            <div className="text-2xl font-bold tracking-tight text-foreground">+{displayStats.newSubscriptions}</div>
             <div className="flex items-center mt-2 space-x-2">
               <Badge variant="success" className="px-1.5 py-0 text-[10px]">
                 +19% <ArrowUpRight className="ml-0.5 h-3 w-3" />
@@ -130,7 +133,7 @@ export default function DashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold tracking-tight text-foreground">{stats.churnRate}</div>
+            <div className="text-2xl font-bold tracking-tight text-foreground">{displayStats.churnRate}</div>
             <div className="flex items-center mt-2 space-x-2">
               <Badge variant="destructive" className="px-1.5 py-0 text-[10px]">
                 -4.1% <ArrowDownRight className="ml-0.5 h-3 w-3" />
