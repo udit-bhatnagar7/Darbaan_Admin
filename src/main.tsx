@@ -14,10 +14,16 @@ async function enableMocking() {
   });
 }
 
-enableMocking().then(() => {
+async function main() {
+  if (import.meta.env.DEV) {
+    await enableMocking();
+  }
+
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <App />
     </StrictMode>,
   );
-});
+}
+
+main();
