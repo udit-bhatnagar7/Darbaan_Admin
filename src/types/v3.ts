@@ -92,7 +92,7 @@ export interface Offer {
   createdBy: string;
 }
 
-export type LeadStage = 'new' | 'contacted' | 'demo_scheduled' | 'proposal_sent' | 'negotiating' | 'won' | 'lost';
+export type LeadStage = 'new' | 'contacted' | 'demo_scheduled' | 'negotiation' | 'converted' | 'lost';
 
 export interface Lead {
   id: string;
@@ -106,13 +106,15 @@ export interface Lead {
   pincode: string;
   totalUnits: number;
   estimatedMRR: number;
+  expectedValue?: number;
+  planSelected?: string;
   referredBy: {
     type: 'admin' | 'existing_society' | 'agent' | 'self';
     name: string;
     societyId?: string;
     agentCode?: string;
   };
-  source: 'referral_form' | 'website' | 'cold_outreach' | 'event' | 'inbound';
+  source: 'referral_form' | 'website' | 'cold_outreach' | 'event' | 'inbound' | 'ad' | 'referral';
   stage: LeadStage;
   lostReason?: string;
   assignedTo: {
@@ -125,6 +127,8 @@ export interface Lead {
   demoScheduledAt?: string;
   proposalSentAt?: string;
   expectedCloseDate?: string;
+  nextAction?: string;
+  lastActivityAt?: string;
   tags: string[];
   createdAt: string;
   updatedAt: string;
@@ -162,11 +166,104 @@ export interface Notification {
 export interface Referral {
   id: string;
   referrerId: string;
-  referredId: string;
+  referrerName: string;
+  referredId?: string;
   referredName: string;
   status: 'pending' | 'contacted' | 'converted' | 'lost';
   rewardAmount: number;
+  rewardDescription?: string;
   rewardStatus: 'pending' | 'paid' | 'cancelled';
   createdAt: string;
   convertedAt?: string;
+}
+
+export type FeedbackType = 'bug' | 'feature_request' | 'improvement' | 'other';
+export type FeedbackStatus = 'pending' | 'in_progress' | 'resolved' | 'closed';
+
+export interface Feedback {
+  id: string;
+  userId: string;
+  userName: string;
+  userAvatar?: string;
+  type: FeedbackType;
+  subject: string;
+  description: string;
+  status: FeedbackStatus;
+  priority: 'low' | 'medium' | 'high' | 'urgent';
+  createdAt: string;
+  updatedAt: string;
+  replies: {
+    id: string;
+    userId: string;
+    userName: string;
+    userAvatar?: string;
+    message: string;
+    isAdmin: boolean;
+    createdAt: string;
+  }[];
+}
+
+export type VendorStatus = 'active' | 'inactive' | 'blocked';
+export type VendorCategory = 'plumbing' | 'electrical' | 'cleaning' | 'security' | 'carpentry' | 'painting' | 'pest_control' | 'other';
+
+export interface Vendor {
+  id: string;
+  name: string;
+  category: VendorCategory;
+  phone: string;
+  email: string;
+  address: string;
+  rating: number;
+  jobsCompleted: number;
+  successRate: number;
+  lastJobDate?: string;
+  responseTime: string;
+  totalEarned: number;
+  pendingAmount: number;
+  status: VendorStatus;
+  isVerified: boolean;
+  isTopPerformer: boolean;
+  isRecommended: boolean;
+  hasFastResponse: boolean;
+  hasHighComplaintRate: boolean;
+  documents: {
+    id: string;
+    name: string;
+    type: string;
+    url: string;
+    uploadedAt: string;
+  }[];
+  recentJobs: {
+    id: string;
+    title: string;
+    date: string;
+    status: 'completed' | 'cancelled' | 'in_progress';
+    amount: number;
+  }[];
+  complaintHistory: {
+    id: string;
+    title: string;
+    date: string;
+    description: string;
+    status: 'resolved' | 'pending';
+  }[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface LookupItem {
+  id: string;
+  name: string;
+  code: string;
+  description: string;
+  isActive: boolean;
+  metadata?: Record<string, any>;
+}
+
+export interface LookupCategory {
+  id: string;
+  title: string;
+  description: string;
+  group: 'society' | 'user' | 'amenities' | 'assets';
+  items: LookupItem[];
 }

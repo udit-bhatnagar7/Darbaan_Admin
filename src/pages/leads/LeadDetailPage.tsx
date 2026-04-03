@@ -51,8 +51,10 @@ const MOCK_LEAD: Lead = {
   pincode: '122001',
   totalUnits: 450,
   estimatedMRR: 12500,
+  expectedValue: 150000,
+  planSelected: 'Premium',
   referredBy: { type: 'existing_society', name: 'Green Valley', societyId: 'gv-1' },
-  source: 'referral_form',
+  source: 'referral',
   stage: 'new',
   assignedTo: { id: 'admin-1', name: 'Sarah Chen', avatar: 'https://i.pravatar.cc/150?u=sarah' },
   notes: [
@@ -65,17 +67,18 @@ const MOCK_LEAD: Lead = {
     { id: 'a3', type: 'stage_change', description: 'Stage updated from New to Contacted', createdAt: '2024-03-26T09:00:00Z' }
   ],
   tags: ['High Priority', 'Referral'],
+  nextAction: 'Call tomorrow at 10 AM',
+  lastActivityAt: '2024-03-26T09:30:00Z',
   createdAt: '2024-03-25T10:00:00Z',
   updatedAt: '2024-03-26T09:30:00Z'
 };
 
 const STAGES: { id: LeadStage; label: string; color: string }[] = [
-  { id: 'new', label: 'New', color: 'bg-primary' },
+  { id: 'new', label: 'New Lead', color: 'bg-primary' },
   { id: 'contacted', label: 'Contacted', color: 'bg-info-500' },
-  { id: 'demo_scheduled', label: 'Demo', color: 'bg-warning-500' },
-  { id: 'proposal_sent', label: 'Proposal', color: 'bg-indigo-500' },
-  { id: 'negotiating', label: 'Negotiating', color: 'bg-orange-500' },
-  { id: 'won', label: 'Won', color: 'bg-success-500' },
+  { id: 'demo_scheduled', label: 'Demo Scheduled', color: 'bg-warning-500' },
+  { id: 'negotiation', label: 'Negotiation', color: 'bg-orange-500' },
+  { id: 'converted', label: 'Converted', color: 'bg-success-500' },
   { id: 'lost', label: 'Lost', color: 'bg-destructive' }
 ];
 

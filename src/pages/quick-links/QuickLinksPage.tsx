@@ -503,23 +503,28 @@ function QuickLinkWizard({ onClose }: { onClose: () => void }) {
   return (
     <div className="p-6">
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <div className="p-2 bg-primary/10 text-primary rounded-lg">
-            <LinkIcon size={20} />
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <div className="p-2 bg-primary/10 text-primary rounded-lg">
+              <LinkIcon size={20} />
+            </div>
+            <h3 className="font-bold">Link Wizard</h3>
           </div>
-          <h3 className="font-bold">Link Wizard</h3>
+          <div className="flex items-center gap-1">
+            {[1, 2, 3].map((s) => (
+              <div 
+                key={s} 
+                className={cn(
+                  "h-1.5 w-8 rounded-full transition-all",
+                  s === step ? "bg-primary" : s < step ? "bg-primary/40" : "bg-muted"
+                )} 
+              />
+            ))}
+          </div>
         </div>
-        <div className="flex items-center gap-1">
-          {[1, 2, 3].map((s) => (
-            <div 
-              key={s} 
-              className={cn(
-                "h-1.5 w-8 rounded-full transition-all",
-                s === step ? "bg-primary" : s < step ? "bg-primary/40" : "bg-muted"
-              )} 
-            />
-          ))}
-        </div>
+        <Button variant="ghost" size="icon" onClick={onClose} className="h-8 w-8 text-muted-foreground hover:text-foreground">
+          <X size={18} />
+        </Button>
       </div>
       {renderStep()}
     </div>

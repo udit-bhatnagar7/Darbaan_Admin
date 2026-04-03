@@ -33,6 +33,33 @@ const InventoryDashboard = lazy(() => import('../pages/shopping/InventoryDashboa
 const ProductStockPage = lazy(() => import('../pages/shopping/ProductStockPage'));
 const AddProductPage = lazy(() => import('../pages/shopping/AddProductPage'));
 const ProcurementPage = lazy(() => import('../pages/shopping/ProcurementPage'));
+const FeedbackPage = lazy(() => import('../pages/support/FeedbackPage'));
+const VendorMasterPage = lazy(() => import('../pages/vendors/VendorMasterPage'));
+const LookupDataPage = lazy(() => import('../pages/lookup/LookupDataPage'));
+
+// New Pages
+const AIInsightsPage = lazy(() => import('../pages/ai/AIInsightsPage'));
+const AIAutomationPage = lazy(() => import('../pages/ai/AIAutomationPage'));
+const AnalyticsPage = lazy(() => import('../pages/analytics/AnalyticsPage'));
+const ReportsPage = lazy(() => import('../pages/analytics/ReportsPage'));
+const VisitorEntryPage = lazy(() => import('../pages/gate/VisitorEntryPage'));
+const StaffEntryPage = lazy(() => import('../pages/gate/StaffEntryPage'));
+const ServiceRequestsPage = lazy(() => import('../pages/services/ServiceRequestsPage'));
+const MaintenancePage = lazy(() => import('../pages/services/MaintenancePage'));
+const BookingsPage = lazy(() => import('../pages/amenities/BookingsPage'));
+const FacilitiesPage = lazy(() => import('../pages/amenities/FacilitiesPage'));
+const ParkingSlotsPage = lazy(() => import('../pages/parking/ParkingSlotsPage'));
+const VehicleLogsPage = lazy(() => import('../pages/parking/VehicleLogsPage'));
+const AnnouncementsPage = lazy(() => import('../pages/communication/AnnouncementsPage'));
+const MessagesPage = lazy(() => import('../pages/communication/MessagesPage'));
+const DocumentsPage = lazy(() => import('../pages/documents/DocumentsPage'));
+const SocietyDocsPage = lazy(() => import('../pages/documents/SocietyDocsPage'));
+const ResidentDocsPage = lazy(() => import('../pages/documents/ResidentDocsPage'));
+const VendorDocsPage = lazy(() => import('../pages/documents/VendorDocsPage'));
+
+// Finance Pages
+const ExpensesPage = lazy(() => import('../pages/finance/ExpensesPage'));
+const FinancialReportsPage = lazy(() => import('../pages/finance/FinancialReportsPage'));
 
 const PageLoader = () => (
   <div className="space-y-4">
@@ -216,7 +243,188 @@ const router = createBrowserRouter([
       },
       {
         path: 'vendor-master',
-        element: <PlaceholderPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <VendorMasterPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'lookup-data',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <LookupDataPage />
+          </Suspense>
+        ),
+      },
+      // AI Engine
+      {
+        path: 'ai/insights',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AIInsightsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'ai/automation',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AIAutomationPage />
+          </Suspense>
+        ),
+      },
+      // Analytics
+      {
+        path: 'analytics',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AnalyticsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'reports',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ReportsPage />
+          </Suspense>
+        ),
+      },
+      // Gate
+      {
+        path: 'gate/visitors',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <VisitorEntryPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'gate/staff',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <StaffEntryPage />
+          </Suspense>
+        ),
+      },
+      // Services
+      {
+        path: 'services/requests',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ServiceRequestsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'services/maintenance',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <MaintenancePage />
+          </Suspense>
+        ),
+      },
+      // Amenities
+      {
+        path: 'amenities/bookings',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <BookingsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'amenities/facilities',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <FacilitiesPage />
+          </Suspense>
+        ),
+      },
+      // Parking
+      {
+        path: 'parking/slots',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ParkingSlotsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'parking/logs',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <VehicleLogsPage />
+          </Suspense>
+        ),
+      },
+      // Communication
+      {
+        path: 'communication/announcements',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AnnouncementsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'communication/messages',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <MessagesPage />
+          </Suspense>
+        ),
+      },
+      // Documents
+      {
+        path: 'documents',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <DocumentsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'documents/society',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <SocietyDocsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'documents/residents',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ResidentDocsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'documents/vendors',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <VendorDocsPage />
+          </Suspense>
+        ),
+      },
+      // Finance
+      {
+        path: 'finance/expenses',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ExpensesPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'finance/reports',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <FinancialReportsPage />
+          </Suspense>
+        ),
       },
       {
         path: 'inventory',
@@ -251,6 +459,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <AddProductPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'support/feedback',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <FeedbackPage />
           </Suspense>
         ),
       },

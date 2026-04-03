@@ -27,8 +27,18 @@ import {
   Kanban,
   UserCheck,
   Bell,
+  MessageSquare,
   Palette,
-  ChevronDown
+  ChevronDown,
+  BrainCircuit,
+  BarChart3,
+  DoorOpen,
+  Wrench,
+  Palmtree,
+  ParkingCircle,
+  MessageSquareText,
+  FileText,
+  Folder
 } from 'lucide-react';
 import { useUIStore } from '@/src/stores/uiStore';
 import { useAuthStore } from '@/src/stores/authStore';
@@ -42,6 +52,22 @@ const navigation = [
     items: [
       { name: 'Dashboard', href: '/', icon: LayoutDashboard },
       { name: 'Quick Links', href: '/quick-links', icon: LinkIcon },
+    ]
+  },
+  {
+    group: 'AI ENGINE',
+    color: 'text-purple-500 dark:text-purple-400',
+    items: [
+      { name: 'AI Control Center', href: '/ai/insights', icon: BrainCircuit },
+      { name: 'Automation', href: '/ai/automation', icon: Settings },
+    ]
+  },
+  {
+    group: 'ANALYTICS & REPORTS',
+    color: 'text-blue-500 dark:text-blue-400',
+    items: [
+      { name: 'Analytics', href: '/analytics', icon: BarChart3 },
+      { name: 'Reports', href: '/reports', icon: FileText },
     ]
   },
   {
@@ -59,6 +85,14 @@ const navigation = [
       { name: 'Payment Links', href: '/billing/payment-links', icon: CreditCard },
       { name: 'Due Payments', href: '/billing/due-payments', icon: Receipt },
       { name: 'Offers & Codes', href: '/billing/offers', icon: Tag },
+    ]
+  },
+  {
+    group: 'FINANCE',
+    color: 'text-rose-500 dark:text-rose-400',
+    items: [
+      { name: 'Expenses', href: '/finance/expenses', icon: Receipt },
+      { name: 'Financial Reports', href: '/finance/reports', icon: BarChart3 },
     ]
   },
   {
@@ -81,6 +115,38 @@ const navigation = [
     ]
   },
   {
+    group: 'GATE MANAGEMENT',
+    color: 'text-orange-500 dark:text-orange-400',
+    items: [
+      { name: 'Visitor Entry', href: '/gate/visitors', icon: DoorOpen },
+      { name: 'Staff Entry', href: '/gate/staff', icon: UserCheck },
+    ]
+  },
+  {
+    group: 'SERVICE MANAGEMENT',
+    color: 'text-teal-500 dark:text-teal-400',
+    items: [
+      { name: 'Service Requests', href: '/services/requests', icon: Wrench },
+      { name: 'Maintenance', href: '/services/maintenance', icon: Settings },
+    ]
+  },
+  {
+    group: 'AMENITIES',
+    color: 'text-pink-500 dark:text-pink-400',
+    items: [
+      { name: 'Bookings', href: '/amenities/bookings', icon: Palmtree },
+      { name: 'Facilities', href: '/amenities/facilities', icon: Building2 },
+    ]
+  },
+  {
+    group: 'PARKING',
+    color: 'text-slate-500 dark:text-slate-400',
+    items: [
+      { name: 'Parking Slots', href: '/parking/slots', icon: ParkingCircle },
+      { name: 'Vehicle Logs', href: '/parking/logs', icon: Truck },
+    ]
+  },
+  {
     group: 'VENDOR MANAGEMENT',
     color: 'text-success-500 dark:text-success-400',
     items: [
@@ -99,10 +165,28 @@ const navigation = [
     ]
   },
   {
+    group: 'COMMUNICATION',
+    color: 'text-cyan-500 dark:text-cyan-400',
+    items: [
+      { name: 'Announcements', href: '/communication/announcements', icon: Bell },
+      { name: 'Messages', href: '/communication/messages', icon: MessageSquareText },
+    ]
+  },
+  {
+    group: 'DOCUMENTS',
+    color: 'text-amber-500 dark:text-amber-400',
+    items: [
+      { name: 'Document Hub', href: '/documents', icon: Folder },
+      { name: 'Society Docs', href: '/documents/society', icon: FileText },
+      { name: 'Resident Docs', href: '/documents/residents', icon: Users },
+      { name: 'Vendor Docs', href: '/documents/vendors', icon: Truck },
+    ]
+  },
+  {
     group: 'LOOKUP',
     color: 'text-rose-500 dark:text-rose-400',
     items: [
-      { name: 'Lookup Data', href: '/lookup', icon: Database },
+      { name: 'Lookup Data', href: '/lookup-data', icon: Database },
     ]
   },
   {
@@ -110,6 +194,7 @@ const navigation = [
     color: 'text-neutral-500 dark:text-neutral-400',
     items: [
       { name: 'Staff & Permissions', href: '/staff', icon: ShieldCheck },
+      { name: 'Feedback & Support', href: '/support/feedback', icon: MessageSquare },
       { name: 'Notifications', href: '/notifications', icon: Bell },
       { name: 'Utilities', href: '/utilities', icon: Package },
       { name: 'Design System', href: '/settings/design-system', icon: Palette },
