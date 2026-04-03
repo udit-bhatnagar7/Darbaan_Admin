@@ -268,7 +268,7 @@ export function Sidebar() {
                           <div className="flex items-center">
                             <item.icon
                               className={cn(
-                                'h-3.5 w-3.5 shrink-0 transition-colors',
+                                'h-5 w-5 shrink-0 transition-colors',
                                 (!sidebarCollapsed || mobileMenuOpen) && 'mr-3',
                                 cn('text-muted-foreground group-hover:opacity-80', group.color)
                               )}
@@ -301,7 +301,7 @@ export function Sidebar() {
                               )}
                               <item.icon
                                 className={cn(
-                                  'h-3.5 w-3.5 shrink-0 transition-colors',
+                                  'h-5 w-5 shrink-0 transition-colors',
                                   (!sidebarCollapsed || mobileMenuOpen) && 'mr-3',
                                   isActive
                                     ? 'text-primary'
@@ -362,7 +362,7 @@ export function Sidebar() {
               setMobileMenu(false);
             }}
           >
-            <LogOut className={cn('h-3.5 w-3.5', (!sidebarCollapsed || mobileMenuOpen) && 'mr-3')} />
+            <LogOut className={cn('h-5 w-5', (!sidebarCollapsed || mobileMenuOpen) && 'mr-3')} />
             {(!sidebarCollapsed || mobileMenuOpen) && <span>Logout</span>}
           </Button>
         </div>

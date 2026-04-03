@@ -33,6 +33,7 @@ const InventoryDashboard = lazy(() => import('../pages/shopping/InventoryDashboa
 const ProductStockPage = lazy(() => import('../pages/shopping/ProductStockPage'));
 const AddProductPage = lazy(() => import('../pages/shopping/AddProductPage'));
 const ProcurementPage = lazy(() => import('../pages/shopping/ProcurementPage'));
+const ProductListPage = lazy(() => import('../pages/shopping/ProductListPage'));
 const FeedbackPage = lazy(() => import('../pages/support/FeedbackPage'));
 const VendorMasterPage = lazy(() => import('../pages/vendors/VendorMasterPage'));
 const LookupDataPage = lazy(() => import('../pages/lookup/LookupDataPage'));
@@ -42,6 +43,7 @@ const AIInsightsPage = lazy(() => import('../pages/ai/AIInsightsPage'));
 const AIAutomationPage = lazy(() => import('../pages/ai/AIAutomationPage'));
 const AnalyticsPage = lazy(() => import('../pages/analytics/AnalyticsPage'));
 const ReportsPage = lazy(() => import('../pages/analytics/ReportsPage'));
+const SettingsPage = lazy(() => import('../pages/settings/SettingsPage'));
 const VisitorEntryPage = lazy(() => import('../pages/gate/VisitorEntryPage'));
 const StaffEntryPage = lazy(() => import('../pages/gate/StaffEntryPage'));
 const ServiceRequestsPage = lazy(() => import('../pages/services/ServiceRequestsPage'));
@@ -452,7 +454,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <PlaceholderPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ProductListPage />
+          </Suspense>
+        ),
       },
       {
         path: 'add-product',
@@ -476,7 +482,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'settings',
-        element: <PlaceholderPage />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <SettingsPage />
+          </Suspense>
+        ),
       },
     ],
   },
